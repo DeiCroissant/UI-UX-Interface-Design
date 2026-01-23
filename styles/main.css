@@ -1,0 +1,46 @@
+@import 'reset.css';
+@import 'variables.css';
+@import 'layout.css';
+@import 'components.css';
+
+body {
+  background: var(--bg-deep);
+  background-image: var(--bg-gradient);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Dynamic Ambient Light */
+.ambient-light {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80vh;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, rgba(0, 243, 255, 0.2) 50%, rgba(0,0,0,0) 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+  animation: floatLight 10s infinite alternate ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes floatLight {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-40%, -60%) scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-60%, -40%) scale(0.9);
+    opacity: 0.9;
+  }
+}

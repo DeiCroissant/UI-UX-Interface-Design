@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism UI | Advanced Web Dev</title>
+    <meta name="description" content="High-fidelity interface demonstrating glassmorphism and floating depth effects.">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Glassmorphism UI | Advanced Web Dev">
+    <meta property="og:description" content="A next-gen interface rendering engine demo using pure CSS glassmorphism.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Glassmorphism+Preview">
+    <meta property="og:url" content="https://aeroglass.demo">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glassmorphism UI">
+    <meta name="twitter:description" content="Floating depth and neon accents in pure CSS.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Accessibility Fix for Reduced Motion (handled in CSS, just a meta note) -->
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+
+    <main class="layout-grid">
+        
+        <!-- Header Area -->
+        <header class="header">
+            <h1 style="font-family: var(--font-display); font-size: 2rem; background: linear-gradient(to right, #00f3ff, #bc13fe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                AERO<span style="font-weight: 400; color: var(--text-dim);">GLASS</span>
+            </h1>
+            <nav>
+                <a href="#" class="btn-neon">Launch Console</a>
+            </nav>
+        </header>
+
+        <!-- Primary Hero Card -->
+        <section class="hero-section glass-card">
+            <span class="badge badge-pink">v2.4 Release</span>
+            <h2 style="font-size: 2.5rem; line-height: 1.2;">Next-Gen Interface<br>Rendering Engine</h2>
+            <p style="max-width: 60ch; margin: var(--space-md) 0;">
+                Experience the depth of the digital frontier. Our new glassmorphism engine uses 
+                multi-layered backdrop blurring to create a sense of floating hierarchy.
+            </p>
+            <div style="margin-top: var(--space-md); display: flex; gap: 1rem;">
+                <button class="btn-neon">Explore Docs</button>
+                <button class="btn-neon" style="filter: hue-rotate(90deg);">View Demo</button>
+            </div>
+        </section>
+
+        <!-- Sidebar Stats -->
+        <aside class="sidebar-stats">
+            <article class="glass-card">
+                <h3>System Status</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--neon-cyan);">98.4%</div>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">Operational Efficiency</p>
+            </article>
+            
+            <article class="glass-card">
+                <h3>Active Nodes</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--neon-pink);">1,024</div>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">Global Connection Points</p>
+            </article>
+
+            <article class="glass-card">
+                <h3>Latency</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary);">12ms</div>
+                <p style="font-size: 0.875rem; margin-top: 0.5rem;">Ping Response Time</p>
+            </article>
+        </aside>
+
+        <!-- Feature Row -->
+        <div class="features-row">
+            <article class="glass-card">
+                <h3>Stackable Layers</h3>
+                <p>Depth is achieved not just by z-index, but by variable blur amounts and shadow diffusion.</p>
+            </article>
+            
+            <article class="glass-card">
+                <h3>Neon Glow</h3>
+                <p>Interactive elements emit a localized ambient light, simulating real-world luminescence.</p>
+            </article>
+            
+            <article class="glass-card">
+                <h3>Fluid Grids</h3>
+                <p>The entire layout is built on a mathematical 12-column grid that adapts to any viewport.</p>
+            </article>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 AeroGlass Systems. Built with Pure HTML/CSS.</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+:root {
+  /* Core Palette */
+  --bg-deep: #0a0e17;
+  --bg-gradient: radial-gradient(circle at 10% 20%, #1a1f35 0%, #0a0e17 90%);
+  
+  /* Glassmorphism Tokens */
+  --glass-surface: rgba(255, 255, 255, 0.03);
+  --glass-stroke: rgba(255, 255, 255, 0.08); 
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+
+  /* Neon Accents */
+  --neon-cyan: #00f3ff;
+  --neon-pink: #bc13fe;
+  --neon-violet: #8a2be2;
+  
+  /* Text */
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-dim: rgba(255, 255, 255, 0.4);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  /* Animation */
+  --ease-spring: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
