@@ -1,15 +1,15 @@
 # 🎨 User Interface Design (UID) Portfolio
 
-> **Course Code:** 72ITSE40903  
+> **Course Code:** 252_72ITSE40903_01
 > **Institution:** Van Lang University - Faculty of Information Technology  
-> **Lecturer:** MSc. Ha Dong Hung  
+> **Lecturer:** MSc. Nguyen Thai Anh
 
 Welcome to my laboratory portfolio for the **User Interface Design** course. This repository documents my journey in mastering web interface design, ranging from fundamental concepts to implementing high-fidelity prototypes using modern tools and languages.
 
 ## 👨‍🎓 Student Information
-- **Name:** [Điền Tên Bạn Vào Đây]
-- **Student ID:** [Điền MSSV]
-- **Class:** [Điền Lớp]
+- **Name:** Pham Manh Ha
+- **Student ID:** 2374802013105
+- **Class:** 252_72ITSE40903_01
 
 ---
 
@@ -59,4 +59,4 @@ This portfolio aims to meet the following criteria:
 * **Creativity:** Application of engaging visual elements and layout logic.
 
 ---
-*© 2026 [Tên Bạn]. Built for User Interface Design Course (72ITSE40903).*
+*© 2026 Pham Manh Ha. Built for User Interface Design Course (72ITSE40903).*
