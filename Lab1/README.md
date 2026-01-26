@@ -1,6 +1,5 @@
 # Lab 01: AeroGlass - Glassmorphism UI Engine
 
-![Project Preview](glass_ui_preview.png)
 
 ## 1. Project Overview
 The objective of Lab 1 was to design and implement a visually striking, user-friendly web interface using **Pure HTML5 and CSS3**, strictly without the use of CSS frameworks (such as Bootstrap or Tailwind).
