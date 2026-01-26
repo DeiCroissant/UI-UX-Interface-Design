@@ -1,6 +1,6 @@
 # 🎨 User Interface Design (UID) Portfolio
 
-> **Course Code:** 252_72ITSE40903_01
+> **Course Code:** 252_72ITSE40903_01 <br>
 > **Institution:** Van Lang University - Faculty of Information Technology  
 > **Lecturer:** MSc. Nguyen Thai Anh
 
