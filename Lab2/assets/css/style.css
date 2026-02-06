@@ -1,0 +1,32 @@
+/* Lab 2 - Tech Portfolio Custom Styles */
+/* Constraint: 99% Bootstrap. Only essential overrides here. */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ensure footer sticks to bottom if content is short */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* Custom hover effect for project cards */
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important; /* Force override for dramatic effect */
+}
+
+/* Hero Section Background (Optional subtle gradient overlay) */
+.hero-section {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+}
