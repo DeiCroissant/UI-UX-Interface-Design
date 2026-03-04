@@ -4,7 +4,7 @@
 > **Tech Stack:** Pure Bootstrap 5 (CDN), HTML5, Custom CSS Variables  
 > **Theme:** High-Tech Dark Mode (Tech-Blue Accents)  
 
-![![alt text](image.png)]
+![alt text](image.png)
 
 ## 1. Project Overview
 The objective of Lab 3 was to design and build a fully responsive **Product Landing Page** strictly using **Bootstrap 5**. The chosen product is a next-generation "AI Smart Lock" (AEGIS.AI). The design focuses on a modern, high-tech aesthetic with ample whitespace, dark backgrounds, and vibrant tech-blue accents.
