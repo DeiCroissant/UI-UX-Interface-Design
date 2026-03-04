@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Lock - Next Gen Security</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-tech-blue: #00e5ff; /* Vibrant, high-tech cyan/blue */
+            --dark-bg: #0b0f19;
+            --darker-bg: #05070a;
+            --text-light: #e2e8f0;
+            --gray-accent: #1e293b;
+            --border-glow: rgba(0, 229, 255, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility specific to theme */
+        .text-tech-blue { color: var(--primary-tech-blue) !important; }
+        .bg-tech-blue { background-color: var(--primary-tech-blue) !important; color: #000 !important; }
+        .border-tech-blue { border-color: var(--primary-tech-blue) !important; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+        
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            color: var(--primary-tech-blue);
+            margin-bottom: 1rem;
+            display: inline-block;
+            border-bottom: 1px solid var(--primary-tech-blue);
+        }
+
+        /* 1. Navbar */
+        .navbar {
+            background-color: rgba(5, 7, 10, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-accent);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: #fff !important;
+        }
+        .navbar-brand span {
+            color: var(--primary-tech-blue);
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-tech-blue) !important;
+        }
+
+        /* 5. Buttons (Primary & Secondary) */
+        .btn-custom-primary {
+            background-color: transparent;
+            color: var(--primary-tech-blue);
+            border: 1px solid var(--primary-tech-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0; /* Sharp geometry */
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-custom-primary:hover {
+            background-color: var(--primary-tech-blue);
+            color: #000;
+            box-shadow: 0 0 15px var(--border-glow);
+        }
+        .btn-custom-secondary {
+            background-color: var(--gray-accent);
+            color: #fff;
+            border: 1px solid var(--gray-accent);
+            border-radius: 0;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+        .btn-custom-secondary:hover {
+            background-color: transparent;
+            border-color: #fff;
+        }
+
+        /* 2. Carousel (Hero Section) */
+        .hero-carousel {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+            background-color: var(--darker-bg);
+            border-bottom: 1px solid var(--gray-accent);
+            overflow: hidden;
+        }
+        .carousel-caption {
+            bottom: 30%;
+            text-align: left;
+            left: 10%;
+            right: 10%;
+        }
+        .carousel-caption h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        @media (max-width: 768px) {
+            .carousel-caption h1 { font-size: 2.5rem; }
+        }
+        .hero-img-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--darker-bg) 100%);
+            z-index: 1;
+        }
+        /* Aesthetic visual element */
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 50px;
+            }
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--gray-accent) 1px, transparent 1px),
+                linear-gradient(90deg, var(--gray-accent) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: 0;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: gridMove 2s linear infinite;
+            will-change: background-position;
+        }
+        .carousel-inner { z-index: 2; position: relative; height: 100%;}
+        .carousel-item-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 4. Cards (Technical Specs) */
+        .tech-card {
+            background-color: var(--darker-bg);
+            border: 1px solid var(--gray-accent);
+            border-radius: 0; /* Sharp design */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-tech-blue);
+        }
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 30px; height: 30px;
+            background: linear-gradient(225deg, transparent 50%, var(--gray-accent) 50%);
+            transition: background 0.3s ease;
+        }
+        .tech-card:hover::before {
+            background: linear-gradient(225deg, transparent 50%, var(--primary-tech-blue) 50%);
+        }
+        .card-body {
+            padding: 2.5rem;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-tech-blue);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* 8. Badges */
+        .badge-custom {
+            border-radius: 0;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4em 0.8em;
+            font-size: 0.7rem;
+        }
+
+        /* 7. Accordion (FAQ) */
+        .accordion-item {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--gray-accent);
+            border-radius: 0 !important;
+        }
+        .accordion-button {
+            background-color: transparent !important;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 1.5rem 0;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+        .accordion-button:not(.collapsed) {
+            color: var(--primary-tech-blue) !important;
+        }
+        .accordion-button::after {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+        .accordion-button:not(.collapsed)::after {
+            filter: invert(72%) sepia(87%) saturate(2331%) hue-rotate(143deg) brightness(101%) contrast(106%); /* Tech blue approximation */
+        }
+        .accordion-body {
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0 0 1.5rem 0;
+        }
+
+        /* 6. Form (Waitlist) */
+        .waitlist-section {
+            background-color: var(--darker-bg);
+            border-top: 1px solid var(--gray-accent);
+            border-bottom: 1px solid var(--gray-accent);
+            position: relative;
+        }
+        .form-control {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--gray-accent);
+            border-radius: 0;
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            background-color: transparent;
+            border-bottom-color: var(--primary-tech-blue);
+            color: #fff;
+        }
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .social-link {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            margin-right: 1.5rem;
+        }
+        .social-link:hover {
+            color: var(--primary-tech-blue);
+        }
+
+        /* Responsive Utilities */
+        @media (min-width: 992px) {
+            .hero-content-col {
+                padding-right: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">AEGIS<span>.AI</span></a>
+            <button class="navbar-toggler rounded-0 border-0" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#specs">Specs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#waitlist" class="btn btn-custom-primary w-100">Pre-Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Carousel (Hero Section) -->
+    <header id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-pause="false">
+        <div class="hero-img-overlay"></div>
+        
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active" data-bs-interval="5000">
+                <div class="hero-grid-bg"></div>
+                <div class="container carousel-item-content">
+                    <div class="row w-100 align-items-center">
+                        <div class="col-12 col-lg-7 position-relative z-3 hero-content-col">
+                            <span class="section-title">Next-Gen Access Control</span>
+                            <h1 class="text-white">Your Face is the Ultimate <span class="text-tech-blue">Key.</span></h1>
+                            <p class="lead text-white-50 mb-5">Sub-millisecond facial recognition powered by on-device neural processing. Absolute security meets zero friction.</p>
+                            <div class="d-flex flex-column flex-sm-row gap-3">
+                                <a href="#waitlist" class="btn btn-custom-primary">Join Waitlist</a>
+                                <a href="#specs" class="btn btn-custom-secondary">Read Specs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-item" data-bs-interval="5000">
+                <div class="hero-grid-bg" style="transform: perspective(500px) rotateX(-60deg) translateY(100px) translateZ(-200px);"></div>
+                <div class="container carousel-item-content">
+                    <div class="row w-100 align-items-center justify-content-end text-lg-end">
+                        <div class="col-12 col-lg-7 position-relative z-3">
+                            <span class="section-title">Infrared Vision</span>
+                            <h1 class="text-white">Flawless execution in <span class="text-tech-blue">Total Darkness.</span></h1>
+                            <p class="lead text-white-50 mb-5">Active IR depth sensing maps 30,000 points on your face, ignoring photos, masks, and zero-light conditions.</p>
+                            <a href="#features" class="btn btn-custom-primary">Explore Tech</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item" data-bs-interval="5000">
+                 <div class="hero-grid-bg" style="background-image: linear-gradient(var(--primary-tech-blue) 1px, transparent 1px), linear-gradient(90deg, var(--primary-tech-blue) 1px, transparent 1px); opacity: 0.1;"></div>
+                <div class="container carousel-item-content">
+                    <div class="row w-100 align-items-center">
+                        <div class="col-12 col-lg-8 position-relative z-3">
+                            <span class="section-title">Military Grade Edge AI</span>
+                            <h1 class="text-white">Data stays on your door, <span class="text-light">Not in the Cloud.</span></h1>
+                            <p class="lead text-white-50 mb-5">Local-only processing guarantees your biometric data never leaves your property. Immutable and unhackable.</p>
+                            <a href="#waitlist" class="btn btn-custom-primary">Secure Yours</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </header>
+
+    <!-- 3. Grid System & 4. Cards & 8. Badges (Features Section) -->
+    <section id="features" class="py-5 my-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <span class="section-title">Core Architecture</span>
+                    <h2 class="display-5 mb-4">Engineered for Extremes</h2>
+                </div>
+            </div>
+            
+            <!-- Grid System Implementation -->
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card tech-card h-100 text-light rounded-0">
+                        <div class="card-body">
+                            <h3 class="card-icon">01</h3>
+                            <h4 class="card-title h5 mb-3">Neural Processing Unit
+                                <span class="badge bg-tech-blue badge-custom ms-2">Proprietary</span>
+                            </h4>
+                            <p class="card-text text-white-50 mb-4">Dedicated edge AI chip processes facial vectors in 0.4 seconds without latency or reliance on Wi-Fi connectivity.</p>
+                            <button class="btn btn-sm btn-custom-secondary">View Benchmarks</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card tech-card h-100 text-light rounded-0 border-tech-blue">
+                        <div class="card-body">
+                            <h3 class="card-icon">02</h3>
+                            <h4 class="card-title h5 mb-3">Anti-Spoofing Lidar
+                                <span class="badge bg-danger text-white badge-custom ms-2">Vital</span>
+                            </h4>
+                            <p class="card-text text-white-50 mb-4">Simultaneous optical and depth mapping rejects high-res photos, silicone masks, and deepfake tablet presentations.</p>
+                            <button class="btn btn-sm btn-custom-secondary">Learn How</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card tech-card h-100 text-light rounded-0">
+                        <div class="card-body">
+                            <h3 class="card-icon">03</h3>
+                            <h4 class="card-title h5 mb-3">Titanium Alloy Core
+                                <span class="badge bg-secondary badge-custom ms-2">Mil-Spec</span>
+                            </h4>
+                            <p class="card-text text-white-50 mb-4">ANSI Grade 1 deadbolt encased in aerospace-grade titanium. Resists picking, drilling, bumping, and thermal attacks.</p>
+                            <button class="btn btn-sm btn-custom-secondary">Material Specs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Accordion (FAQ) -->
+    <section id="faq" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <span class="section-title">Intelligence Database</span>
+                    <h2 class="display-5 mb-5">System Inquiries</h2>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How does facial recognition work in absolute darkness?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    AEGIS.AI does not rely on standard optical sensors. It projects an invisible grid of 30,000 infrared dots onto the subject's face, reading the unique 3D topography. This IR depth mapping functions identically in midday sun or pitch black.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What happens to my biometric data? Is it stored in the cloud?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    No. Your face is mathematically hashed into an encrypted vector file stored inside the lock's local Secure Enclave. Raw images are never saved, and no biometric data is ever transmitted over the internet or stored on our servers.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What is the fail-safe if the batteries die or power is lost?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The system runs on a rechargeable battery pack lasting 6-8 months. If depleted, there are external jump-start contacts for a 9V battery, and a concealed physical keyway for mechanical override utilizing an un-pickable dimple key system.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Form (Waitlist) -->
+    <section id="waitlist" class="waitlist-section py-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+                    <span class="section-title">Limited Allocation</span>
+                    <h2 class="display-5 mb-4">Secure Your Vector.</h2>
+                    <p class="lead text-white-50">Batch 01 production is limited to 5,000 units. Enter your protocols to join the priority acquisition list.</p>
+                </div>
+                <div class="col-12 col-lg-6 ps-lg-5">
+                    <form>
+                        <div class="mb-4">
+                            <input type="text" class="form-control" id="targetName" placeholder="Full Designation (Name)" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" class="form-control" id="targetEmail" placeholder="Comm Link (Email Address)" required>
+                        </div>
+                        <div class="mb-5">
+                            <select class="form-control w-100" id="propertyType">
+                                <option value="" disabled selected>Select Installation Sector</option>
+                                <option value="residential">Residential Sector</option>
+                                <option value="commercial">Commercial/Enterprise</option>
+                                <option value="industrial">Industrial/High-Security</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-custom-primary w-100">Initialize Waitlist Protocol</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Requirement -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2026 AEGIS.AI Protocol. All rights reserved.</p>
+                </div>
+                <div class="col-12 col-md-6 text-center text-md-end">
+                    <a href="#" class="social-link">Twitter / X</a>
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link me-0">Discord</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
